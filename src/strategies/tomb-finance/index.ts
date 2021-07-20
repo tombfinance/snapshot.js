@@ -93,7 +93,6 @@ export async function strategy(
       const tshareInLpInWallet = parseFloat(
         formatUnits(
           result.lp[address]
-            .mul(PRECISION)
             .mul(result.lp.tshareBalance)
             .div(result.lp.totalSupply),
           18
@@ -107,7 +106,6 @@ export async function strategy(
       const tshareInCemetery = parseFloat(
         formatUnits(
           result.lpInCemetery[address].amount
-            .mul(PRECISION)
             .mul(result.lp.tshareBalance)
             .div(result.lp.totalSupply),
           18
@@ -129,6 +127,12 @@ export async function strategy(
           ),
         0
       );
+
+      console.log("tshareInWallet", tshareInWallet);
+      console.log("tshareInLpWallet", tshareInLpInWallet);
+      console.log("tshareInMasonry", tshareInMasonry);
+      console.log("tshareInCemetery", tshareInCemetery);
+      console.log("tshareInVault", tshareInVaults);
 
       return [
         address,
